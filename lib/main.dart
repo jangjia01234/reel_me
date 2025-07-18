@@ -14,7 +14,7 @@ class ReelMe extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Container(),
+      home: Text("main"),
     );
   }
 }
