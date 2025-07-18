@@ -1,8 +1,7 @@
-# reel_me
+# ReelMe
+<img width="1920" height="1080" alt="Untitled (5)" src="https://github.com/user-attachments/assets/9cfc15c3-f90d-40f4-a130-2a119fea5910" />
 
-### Reel your vibe, ReelMe.
-
-ReelMe is a TikTok-style dating app where you can vibe, swipe, and find real matches.
+**ReelMe** is a TikTok-style dating app where you can vibe, swipe, and find real matches.
 
 ## About
 
