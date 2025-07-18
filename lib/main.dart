@@ -14,14 +14,16 @@ class ReelMe extends StatelessWidget {
     return MaterialApp(
       title: 'ReelMe',
       theme: ThemeData(
-        primaryColor: const Color(0xFF843B3A),
         scaffoldBackgroundColor: Colors.white,
-        appBarTheme: AppBarTheme(
+        primaryColor: const Color(0xFFE9435A),
+        appBarTheme: const AppBarTheme(
+          foregroundColor: Colors.black,
           backgroundColor: Colors.white,
+          elevation: 0,
           titleTextStyle: TextStyle(
-            fontSize: Sizes.size16,
-            fontWeight: FontWeight.w600,
             color: Colors.black,
+            fontSize: Sizes.size16 + Sizes.size2,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ),
