@@ -1,16 +1,29 @@
 # reel_me
 
-A new Flutter project.
+### Reel your vibe, ReelMe.
 
-## Getting Started
+ReelMe is a TikTok-style dating app where you can vibe, swipe, and find real matches.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## About
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+ReelMe combines the addictive short-video experience of TikTok with the excitement of dating.  
+Users browse through short videos, express their unique vibes, and swipe to connect with potential matches.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## Features *(Planned)*
+
+- Browse and swipe through short video profiles
+- Send hearts or direct messages to matches you like
+- Discover genuine connections through video-based interactions
+- Simple and intuitive UI/UX inspired by popular social and dating apps
+
+---
+
+## Tech Stack *(Planned)*
+
+- Flutter for cross-platform mobile development
+- Firebase for backend services and real-time data
+- Video player and camera integration for smooth video experience
