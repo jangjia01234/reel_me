@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reel_me/constants/sizes.dart';
-import 'package:reel_me/screens/sign_up.dart';
+import 'package:reel_me/screens/sign_up_screen.dart';
 
 void main() {
   runApp(const ReelMe());
