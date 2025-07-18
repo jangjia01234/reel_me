@@ -4,14 +4,10 @@
 
 ReelMe is a TikTok-style dating app where you can vibe, swipe, and find real matches.
 
----
-
 ## About
 
 ReelMe combines the addictive short-video experience of TikTok with the excitement of dating.  
 Users browse through short videos, express their unique vibes, and swipe to connect with potential matches.
-
----
 
 ## Features *(Planned)*
 
@@ -19,8 +15,6 @@ Users browse through short videos, express their unique vibes, and swipe to conn
 - Send hearts or direct messages to matches you like
 - Discover genuine connections through video-based interactions
 - Simple and intuitive UI/UX inspired by popular social and dating apps
-
----
 
 ## Tech Stack *(Planned)*
 
