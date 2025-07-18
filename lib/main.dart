@@ -15,6 +15,7 @@ class ReelMe extends StatelessWidget {
       title: 'ReelMe',
       theme: ThemeData(
         primaryColor: const Color(0xFF843B3A),
+        scaffoldBackgroundColor: Colors.white,
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.white,
           titleTextStyle: TextStyle(

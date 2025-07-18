@@ -19,7 +19,6 @@ class SignUpScreen extends StatelessWidget {
           ),
         ),
       ),
-      backgroundColor: Colors.white,
     );
   }
 }
