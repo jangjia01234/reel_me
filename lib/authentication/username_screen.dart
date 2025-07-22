@@ -56,6 +56,7 @@ class _UsernameScreenState extends State<UsernameScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Gaps.v20,
               Text(
                 "Create username",
                 style: TextStyle(
