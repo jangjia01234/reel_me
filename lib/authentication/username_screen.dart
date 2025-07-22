@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:reel_me/authentication/widgets/form_button.dart';
 
 import '../constants/gaps.dart';
 import '../constants/sizes.dart';
+import 'email_screen.dart';
 
 class UsernameScreen extends StatefulWidget {
   const UsernameScreen({super.key});
@@ -30,6 +32,13 @@ class _UsernameScreenState extends State<UsernameScreen> {
   void dispose() {
     _usernameController.dispose();
     super.dispose();
+  }
+
+  void _onNextTap() {
+    if (_username.isEmpty) return;
+    Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (context) => EmailScreen()));
   }
 
   @override
@@ -78,34 +87,9 @@ class _UsernameScreenState extends State<UsernameScreen> {
                 ),
               ),
               Gaps.v28,
-              FractionallySizedBox(
-                widthFactor: 1,
-                child: AnimatedContainer(
-                  duration: Duration(milliseconds: 300),
-                  padding: const EdgeInsets.symmetric(
-                    vertical: Sizes.size14,
-                    horizontal: Sizes.size10,
-                  ),
-                  color: _username.isEmpty
-                      ? Theme.of(context).primaryColor
-                      : Colors.grey.shade200,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Text(
-                        "Sign up",
-                        style: TextStyle(
-                          fontSize: Sizes.size14,
-                          fontWeight: FontWeight.w500,
-                          color: _username.isEmpty
-                              ? Colors.white
-                              : Colors.black45,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                ),
+              GestureDetector(
+                onTap: _onNextTap,
+                child: FormButton(disabled: _username.isEmpty),
               ),
             ],
           ),
