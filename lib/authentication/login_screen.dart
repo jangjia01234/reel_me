@@ -26,7 +26,7 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   Gaps.v72,
                   Text(
-                    "Log in to TikTok",
+                    "Log in to ReelMe",
                     style: TextStyle(
                       fontSize: Sizes.size24,
                       fontWeight: FontWeight.w700,
