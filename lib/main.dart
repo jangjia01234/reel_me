@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reel_me/authentication/sign_up_screen.dart';
+import 'package:reel_me/authentication/username_screen.dart';
 import 'package:reel_me/constants/sizes.dart';
 
 void main() {
@@ -27,7 +27,7 @@ class ReelMe extends StatelessWidget {
           ),
         ),
       ),
-      home: SignUpScreen(),
+      home: UsernameScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
