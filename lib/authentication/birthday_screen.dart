@@ -19,6 +19,9 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
   @override
   void initState() {
     super.initState();
+
+    final textDate = date.toString().split(' ').first;
+    _birthdayController.value = TextEditingValue(text: textDate);
   }
 
   @override
