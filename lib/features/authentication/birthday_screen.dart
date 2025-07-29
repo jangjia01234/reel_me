@@ -89,9 +89,8 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
                 ),
               ),
               Gaps.v10,
-              // TODO: cupertinoDatePicker 로 대체
               TextFormField(
-                enabled: false,
+                readOnly: true,
                 controller: _birthdayController,
                 cursorColor: Theme.of(context).primaryColor,
                 decoration: InputDecoration(
