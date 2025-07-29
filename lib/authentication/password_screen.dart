@@ -45,9 +45,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
   }
 
   void _onClearTap() {
-    setState(() {
-      _passwordController.text = "";
-    });
+    _passwordController.clear();
   }
 
   bool _isPasswordValid() {
