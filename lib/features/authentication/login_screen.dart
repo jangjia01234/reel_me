@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:reel_me/constants/gaps.dart';
+import 'package:reel_me/features/authentication/login_form_screen.dart';
 import 'package:reel_me/features/authentication/widgets/auth_button.dart';
 
 import '../../constants/sizes.dart';
@@ -10,6 +11,12 @@ class LoginScreen extends StatelessWidget {
 
   void _onSignupTap(BuildContext context) {
     Navigator.of(context).pop();
+  }
+
+  void _onAuthButtonTap(BuildContext context) {
+    Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (context) => const LoginFormScreen()));
   }
 
   @override
@@ -45,9 +52,12 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   Gaps.v32,
-                  AuthButton(
-                    text: 'Use phone / email / username',
-                    icon: FaIcon(FontAwesomeIcons.user, size: 18),
+                  GestureDetector(
+                    onTap: () => _onAuthButtonTap(context),
+                    child: AuthButton(
+                      text: 'Use phone / email / username',
+                      icon: FaIcon(FontAwesomeIcons.user, size: 18),
+                    ),
                   ),
                   Gaps.v12,
                   AuthButton(
