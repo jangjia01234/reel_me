@@ -40,7 +40,7 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
   }
 
   void _setNextFieldDate(DateTime time) {
-    final textDate = maxDate.toString().split(' ').first;
+    final textDate = time.toString().split(' ').first;
     _birthdayController.value = TextEditingValue(text: textDate);
   }
 
@@ -50,7 +50,10 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
       appBar: AppBar(
         title: Text(
           "Sign up",
-          style: TextStyle(fontSize: Sizes.size16, fontWeight: FontWeight.w700),
+          style: TextStyle(
+            fontSize: Sizes.size16,
+            fontWeight: FontWeight.w700,
+          ),
         ),
       ),
       body: SafeArea(
