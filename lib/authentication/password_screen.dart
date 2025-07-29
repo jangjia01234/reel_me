@@ -99,8 +99,12 @@ class _PasswordScreenState extends State<PasswordScreen> {
               Row(
                 children: [
                   Icon(
-                    Icons.check_circle_outline_rounded,
-                    color: Colors.green,
+                    _isPasswordValid()
+                        ? Icons.check_circle_outline_rounded
+                        : Icons.warning_amber_rounded,
+                    color: _isPasswordValid()
+                        ? Colors.green
+                        : Theme.of(context).primaryColor,
                   ),
                   Gaps.h2,
                   Text(
