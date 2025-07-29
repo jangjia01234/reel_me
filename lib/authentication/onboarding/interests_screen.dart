@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class OnbordingScreen extends StatelessWidget {
-  const OnbordingScreen({super.key});
+class InterestsScreen extends StatelessWidget {
+  const InterestsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text("onbording screen"),
+      body: Text("interests screen"),
     );
   }
 }

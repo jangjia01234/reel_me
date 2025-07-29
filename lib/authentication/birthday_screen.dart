@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:reel_me/authentication/onboarding/interests_screen.dart';
 import 'package:reel_me/authentication/widgets/form_button.dart';
 
 import '../constants/gaps.dart';
@@ -14,14 +16,23 @@ class BirthdayScreen extends StatefulWidget {
 class _BirthdayScreenState extends State<BirthdayScreen> {
   final TextEditingController _birthdayController = TextEditingController();
 
-  DateTime date = DateTime.now();
+  DateTime initialDate = DateTime.now();
+  late DateTime twelveYearsAgoDate;
 
   @override
   void initState() {
     super.initState();
 
-    final textDate = date.toString().split(' ').first;
-    _birthdayController.value = TextEditingValue(text: textDate);
+    twelveYearsAgoDate = DateTime(
+      initialDate.year - 12,
+      initialDate.month,
+      initialDate.day,
+      initialDate.hour,
+      initialDate.minute,
+      initialDate.second,
+    );
+
+    _setNextFieldDate(initialDate);
   }
 
   @override
@@ -30,7 +41,19 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
     super.dispose();
   }
 
-  void _onNextTap() {}
+  void _onNextTap() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => InterestsScreen(),
+      ),
+    );
+  }
+
+  void _setNextFieldDate(DateTime time) {
+    final textDate = twelveYearsAgoDate.toString().split(' ').first;
+    _birthdayController.value = TextEditingValue(text: textDate);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,6 +109,19 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
                 child: FormButton(disabled: false),
               ),
             ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        // FIXME: Picker 높이 이슈 해결
+        color: Colors.white,
+        child: SizedBox(
+          height: 500,
+          child: CupertinoDatePicker(
+            onDateTimeChanged: _setNextFieldDate,
+            mode: CupertinoDatePickerMode.date,
+            initialDateTime: twelveYearsAgoDate,
+            maximumDate: twelveYearsAgoDate,
           ),
         ),
       ),
