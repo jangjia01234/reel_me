@@ -48,6 +48,12 @@ class _PasswordScreenState extends State<PasswordScreen> {
     _passwordController.clear();
   }
 
+  void _onToggleObscureText() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
   bool _isPasswordValid() {
     return _password.isNotEmpty && _password.length > 8;
   }
@@ -95,8 +101,12 @@ class _PasswordScreenState extends State<PasswordScreen> {
                       ),
                       Gaps.h14,
                       GestureDetector(
-                        onTap: () {},
-                        child: FaIcon(FontAwesomeIcons.eye),
+                        onTap: _onToggleObscureText,
+                        child: FaIcon(
+                          _obscureText
+                              ? FontAwesomeIcons.eye
+                              : FontAwesomeIcons.eyeSlash,
+                        ),
                       ),
                     ],
                   ),
