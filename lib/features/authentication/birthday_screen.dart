@@ -113,10 +113,9 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        // FIXME: Picker 높이 이슈 해결
         color: Colors.white,
         child: SizedBox(
-          height: 500,
+          height: 300,
           child: CupertinoDatePicker(
             onDateTimeChanged: _setNextFieldDate,
             mode: CupertinoDatePickerMode.date,
