@@ -74,6 +74,7 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
                 ),
               ),
               Gaps.v10,
+              // TODO: cupertino date picker로 대체
               TextFormField(
                 controller: _usernameController,
                 cursorColor: Theme.of(context).primaryColor,
