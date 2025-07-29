@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:reel_me/authentication/birthday_screen.dart';
 import 'package:reel_me/authentication/widgets/form_button.dart';
 
@@ -78,6 +79,23 @@ class _PasswordScreenState extends State<PasswordScreen> {
                 autocorrect: false,
                 cursorColor: Theme.of(context).primaryColor,
                 decoration: InputDecoration(
+                  suffix: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      GestureDetector(
+                        onTap: () {},
+                        child: FaIcon(
+                          FontAwesomeIcons.solidCircleXmark,
+                          color: Colors.grey.shade400,
+                        ),
+                      ),
+                      Gaps.h14,
+                      GestureDetector(
+                        onTap: () {},
+                        child: FaIcon(FontAwesomeIcons.eye),
+                      ),
+                    ],
+                  ),
                   hintText: "Password",
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey.shade400),
