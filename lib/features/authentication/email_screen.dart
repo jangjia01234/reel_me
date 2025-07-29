@@ -1,44 +1,56 @@
 import 'package:flutter/material.dart';
-import 'package:reel_me/authentication/widgets/form_button.dart';
+import 'package:reel_me/features/authentication/password_screen.dart';
+import 'package:reel_me/features/authentication/widgets/form_button.dart';
 
-import '../constants/gaps.dart';
-import '../constants/sizes.dart';
-import 'email_screen.dart';
+import '../../constants/gaps.dart';
+import '../../constants/sizes.dart';
 
-class UsernameScreen extends StatefulWidget {
-  const UsernameScreen({super.key});
+class EmailScreen extends StatefulWidget {
+  const EmailScreen({super.key});
 
   @override
-  State<UsernameScreen> createState() => _UsernameScreenState();
+  State<EmailScreen> createState() => _EmailScreenState();
 }
 
-class _UsernameScreenState extends State<UsernameScreen> {
-  final TextEditingController _usernameController = TextEditingController();
+class _EmailScreenState extends State<EmailScreen> {
+  final TextEditingController _emailController = TextEditingController();
 
-  String _username = ""; // private 처리를 위해 _ 표시
+  String _email = "";
 
   @override
   void initState() {
     super.initState();
 
-    _usernameController.addListener(() {
+    _emailController.addListener(() {
       setState(() {
-        _username = _usernameController.text;
+        _email = _emailController.text;
       });
     });
   }
 
   @override
   void dispose() {
-    _usernameController.dispose();
+    _emailController.dispose();
     super.dispose();
   }
 
-  void _onNextTap() {
-    if (_username.isEmpty) return;
-    Navigator.of(
+  void _onSubmit() {
+    if (_email.isEmpty || _isEmailValid() != null) return;
+    Navigator.push(
       context,
-    ).push(MaterialPageRoute(builder: (context) => EmailScreen()));
+      MaterialPageRoute(builder: (context) => PasswordScreen()),
+    );
+  }
+
+  String? _isEmailValid() {
+    if (_email.isEmpty) return null;
+    final regExp = RegExp(
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+    );
+    if (!regExp.hasMatch(_email)) {
+      return "Email not valid";
+    }
+    return null;
   }
 
   @override
@@ -58,27 +70,21 @@ class _UsernameScreenState extends State<UsernameScreen> {
             children: [
               Gaps.v20,
               Text(
-                "Create username",
+                "What is your email?",
                 style: TextStyle(
                   fontSize: Sizes.size16 + Sizes.size2,
                   fontWeight: FontWeight.w800,
                 ),
               ),
-              Gaps.v4,
-              Text(
-                "You can always change this later.",
-                style: TextStyle(
-                  fontSize: Sizes.size14,
-                  fontWeight: FontWeight.w300,
-                  color: Colors.black54,
-                ),
-              ),
               Gaps.v10,
               TextFormField(
-                controller: _usernameController,
+                controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
+                onEditingComplete: _onSubmit,
                 cursorColor: Theme.of(context).primaryColor,
                 decoration: InputDecoration(
-                  hintText: "Username",
+                  hintText: "Email",
+                  errorText: _isEmailValid(),
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey.shade400),
                   ),
@@ -89,8 +95,10 @@ class _UsernameScreenState extends State<UsernameScreen> {
               ),
               Gaps.v28,
               GestureDetector(
-                onTap: _onNextTap,
-                child: FormButton(disabled: _username.isEmpty),
+                onTap: _onSubmit,
+                child: FormButton(
+                  disabled: _email.isEmpty || _isEmailValid() != null,
+                ),
               ),
             ],
           ),

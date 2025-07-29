@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:reel_me/authentication/widgets/auth_button.dart';
 import 'package:reel_me/constants/gaps.dart';
+import 'package:reel_me/features/authentication/username_screen.dart';
+import 'package:reel_me/features/authentication/widgets/auth_button.dart';
 
-import '../constants/sizes.dart';
+import '../../constants/sizes.dart';
+import 'login_screen.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
-  void _onSignupTap(BuildContext context) {
-    Navigator.of(context).pop();
+  void _onAuthButtonTap(BuildContext context) {
+    Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (context) => const UsernameScreen()));
+  }
+
+  void _onLoginTap(BuildContext context) {
+    Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (context) => const LoginScreen()));
   }
 
   @override
@@ -26,7 +36,7 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   Gaps.v72,
                   Text(
-                    "Log in to ReelMe",
+                    "Sign up for ReelMe",
                     style: TextStyle(
                       fontSize: Sizes.size24,
                       fontWeight: FontWeight.w700,
@@ -36,7 +46,7 @@ class LoginScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
-                      "Manage your account, check notifications, comment on videos, and more.",
+                      "Create a profile, follow other accounts, make your own videos, and more.",
                       style: TextStyle(
                         color: Colors.grey.shade700,
                         fontWeight: FontWeight.w300,
@@ -45,14 +55,22 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   Gaps.v32,
-                  AuthButton(
-                    text: 'Use phone / email / username',
-                    icon: FaIcon(FontAwesomeIcons.user, size: 18),
+                  GestureDetector(
+                    onTap: () => _onAuthButtonTap(context),
+                    child: AuthButton(
+                      text: 'Use phone or email',
+                      icon: FaIcon(FontAwesomeIcons.user, size: 18),
+                    ),
                   ),
                   Gaps.v12,
                   AuthButton(
                     icon: FaIcon(FontAwesomeIcons.facebook, size: 18),
                     text: "Continue with Facebook",
+                  ),
+                  Gaps.v12,
+                  AuthButton(
+                    icon: FaIcon(FontAwesomeIcons.apple, size: 18),
+                    text: "Continue with Apple",
                   ),
                   Gaps.v12,
                   AuthButton(
@@ -112,14 +130,14 @@ class LoginScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Don't have an account?",
+              "Already have an account?",
               style: TextStyle(fontSize: Sizes.size14),
             ),
             Gaps.h5,
             GestureDetector(
-              onTap: () => _onSignupTap(context),
+              onTap: () => _onLoginTap(context),
               child: Text(
-                "Sign up",
+                "Log in",
                 style: TextStyle(
                   fontSize: Sizes.size14,
                   fontWeight: FontWeight.w600,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:reel_me/authentication/birthday_screen.dart';
-import 'package:reel_me/authentication/widgets/form_button.dart';
+import 'package:reel_me/features/authentication/birthday_screen.dart';
+import 'package:reel_me/features/authentication/widgets/form_button.dart';
 
-import '../constants/gaps.dart';
-import '../constants/sizes.dart';
+import '../../constants/gaps.dart';
+import '../../constants/sizes.dart';
 
 class PasswordScreen extends StatefulWidget {
   const PasswordScreen({super.key});
