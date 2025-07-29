@@ -13,7 +13,7 @@ class LoginScreen extends StatelessWidget {
     Navigator.of(context).pop();
   }
 
-  void _onAuthButtonTap(BuildContext context) {
+  void _onEmailLoginTap(BuildContext context) {
     Navigator.of(
       context,
     ).push(MaterialPageRoute(builder: (context) => const LoginFormScreen()));
@@ -53,7 +53,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   Gaps.v32,
                   GestureDetector(
-                    onTap: () => _onAuthButtonTap(context),
+                    onTap: () => _onEmailLoginTap(context),
                     child: AuthButton(
                       text: 'Use phone / email / username',
                       icon: FaIcon(FontAwesomeIcons.user, size: 18),
