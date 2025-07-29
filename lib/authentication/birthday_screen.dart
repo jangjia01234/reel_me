@@ -5,6 +5,8 @@ class BirthdayScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Text("birthday screen"));
+    return Scaffold(
+      body: Text("birthday screen"),
+    );
   }
 }
