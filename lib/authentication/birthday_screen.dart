@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reel_me/authentication/onbording_screen.dart';
 import 'package:reel_me/authentication/widgets/form_button.dart';
 
 import '../constants/gaps.dart';
@@ -13,33 +12,22 @@ class BirthdayScreen extends StatefulWidget {
 }
 
 class _BirthdayScreenState extends State<BirthdayScreen> {
-  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _birthdayController = TextEditingController();
 
-  String _username = ""; // private 처리를 위해 _ 표시
+  DateTime date = DateTime.now();
 
   @override
   void initState() {
     super.initState();
-
-    _usernameController.addListener(() {
-      setState(() {
-        _username = _usernameController.text;
-      });
-    });
   }
 
   @override
   void dispose() {
-    _usernameController.dispose();
+    _birthdayController.dispose();
     super.dispose();
   }
 
-  void _onNextTap() {
-    if (_username.isEmpty) return;
-    Navigator.of(
-      context,
-    ).push(MaterialPageRoute(builder: (context) => OnbordingScreen()));
-  }
+  void _onNextTap() {}
 
   @override
   Widget build(BuildContext context) {
@@ -75,12 +63,12 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
                 ),
               ),
               Gaps.v10,
-              // TODO: cupertino date picker로 대체
+              // TODO: cupertinoDatePicker 로 대체
               TextFormField(
-                controller: _usernameController,
+                enabled: false,
+                controller: _birthdayController,
                 cursorColor: Theme.of(context).primaryColor,
                 decoration: InputDecoration(
-                  hintText: "Username",
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey.shade400),
                   ),
@@ -92,7 +80,7 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
               Gaps.v28,
               GestureDetector(
                 onTap: _onNextTap,
-                child: FormButton(disabled: _username.isEmpty),
+                child: FormButton(disabled: false),
               ),
             ],
           ),
