@@ -41,6 +41,7 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
             children: [
               Gaps.v28,
               TextFormField(
+                  cursorColor: Theme.of(context).primaryColor,
                   decoration: InputDecoration(
                     hintText: 'Email',
                     enabledBorder: UnderlineInputBorder(
@@ -61,8 +62,15 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                   }),
               Gaps.v16,
               TextFormField(
+                cursorColor: Theme.of(context).primaryColor,
                 decoration: InputDecoration(
                   hintText: 'Password',
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey.shade400),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey.shade400),
+                  ),
                 ),
                 validator: (value) {
                   // error message
