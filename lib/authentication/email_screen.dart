@@ -15,7 +15,7 @@ class EmailScreen extends StatefulWidget {
 class _EmailScreenState extends State<EmailScreen> {
   final TextEditingController _emailController = TextEditingController();
 
-  String _email = ""; // private 처리를 위해 _ 표시
+  String _email = "";
 
   @override
   void initState() {
