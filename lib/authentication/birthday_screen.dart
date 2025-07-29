@@ -57,6 +57,7 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Gaps.v20,
+              // TODO: 우측 이미지 추가
               Text(
                 "When's your birthday?",
                 style: TextStyle(
