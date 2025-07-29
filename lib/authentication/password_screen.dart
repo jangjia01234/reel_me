@@ -37,7 +37,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
   }
 
   void _onSubmit() {
-    if (_password.isEmpty || _isPasswordValid() != null) return;
+    if (_password.isEmpty || _isPasswordValid()) return;
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => BirthdayScreen()),
@@ -96,7 +96,8 @@ class _PasswordScreenState extends State<PasswordScreen> {
                         onTap: _onClearTap,
                         child: FaIcon(
                           FontAwesomeIcons.solidCircleXmark,
-                          color: Colors.grey.shade400,
+                          color: Colors.grey.shade500,
+                          size: Sizes.size20,
                         ),
                       ),
                       Gaps.h14,
@@ -106,6 +107,8 @@ class _PasswordScreenState extends State<PasswordScreen> {
                           _obscureText
                               ? FontAwesomeIcons.eye
                               : FontAwesomeIcons.eyeSlash,
+                          color: Colors.grey.shade500,
+                          size: Sizes.size20,
                         ),
                       ),
                     ],
@@ -130,33 +133,16 @@ class _PasswordScreenState extends State<PasswordScreen> {
               Gaps.v5,
               Row(
                 children: [
-                  Icon(
-                    _isPasswordValid()
-                        ? Icons.check_circle_outline_rounded
-                        : Icons.warning_amber_rounded,
+                  FaIcon(
+                    FontAwesomeIcons.circleCheck,
+                    size: Sizes.size20,
                     color: _isPasswordValid()
                         ? Colors.green
-                        : Theme.of(context).primaryColor,
+                        : Colors.grey.shade400,
                   ),
-                  Gaps.h2,
+                  Gaps.h5,
                   Text(
                     "8 to 20 characters",
-                    style: TextStyle(
-                      fontSize: Sizes.size12,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Icon(
-                    Icons.check_circle_outline_rounded,
-                    color: Colors.green,
-                  ),
-                  Gaps.h2,
-                  Text(
-                    "Letters, numbers, and special characters",
                     style: TextStyle(
                       fontSize: Sizes.size12,
                       fontWeight: FontWeight.w500,
