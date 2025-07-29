@@ -44,6 +44,12 @@ class _PasswordScreenState extends State<PasswordScreen> {
     );
   }
 
+  void _onClearTap() {
+    setState(() {
+      _passwordController.text = "";
+    });
+  }
+
   bool _isPasswordValid() {
     return _password.isNotEmpty && _password.length > 8;
   }
@@ -83,7 +89,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       GestureDetector(
-                        onTap: () {},
+                        onTap: _onClearTap,
                         child: FaIcon(
                           FontAwesomeIcons.solidCircleXmark,
                           color: Colors.grey.shade400,
