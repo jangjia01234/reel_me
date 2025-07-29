@@ -17,7 +17,11 @@ class FormButton extends StatelessWidget {
           vertical: Sizes.size14,
           horizontal: Sizes.size10,
         ),
-        color: disabled ? Colors.grey.shade200 : Theme.of(context).primaryColor,
+        decoration: BoxDecoration(
+          color:
+              disabled ? Colors.grey.shade200 : Theme.of(context).primaryColor,
+          borderRadius: BorderRadius.all(Radius.circular(Sizes.size5)),
+        ),
         child: Stack(
           alignment: Alignment.center,
           children: [
