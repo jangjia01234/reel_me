@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reel_me/constants/gaps.dart';
 import 'package:reel_me/features/authentication/widgets/form_button.dart';
+import 'package:reel_me/features/onboarding/interests_screen.dart';
 
 import '../../constants/sizes.dart';
 
@@ -23,6 +24,12 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
         // 에러가 없을 경우
         // Form을 save하면 모든 텍스트 입력에 대해 onSaved 함수 실행
         _formKey.currentState!.save();
+
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => InterestsScreen(),
+          ),
+        );
       }
     }
   }
@@ -53,7 +60,11 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                   ),
                   validator: (value) {
                     // error message
-                    return null;
+                    if (value != null && value.isEmpty) {
+                      return "Please write your email";
+                    } else {
+                      return null;
+                    }
                   },
                   onSaved: (newValue) {
                     if (newValue != null) {
@@ -74,7 +85,11 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                 ),
                 validator: (value) {
                   // error message
-                  return null;
+                  if (value != null && value.isEmpty) {
+                    return "Please write your password";
+                  } else {
+                    return null;
+                  }
                 },
                 onSaved: (newValue) {
                   if (newValue != null) {
