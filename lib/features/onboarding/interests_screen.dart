@@ -3,114 +3,155 @@ import 'package:reel_me/constants/gaps.dart';
 
 import '../../constants/sizes.dart';
 
-class InterestsScreen extends StatelessWidget {
+class InterestsScreen extends StatefulWidget {
   const InterestsScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    const interests = [
-      "Daily Life",
-      "Comedy",
-      "Entertainment",
-      "Animals",
-      "Food",
-      "Beauty & Style",
-      "Drama",
-      "Learning",
-      "Talent",
-      "Sports",
-      "Auto",
-      "Family",
-      "Fitness & Health",
-      "DIY & Life Hacks",
-      "Arts & Crafts",
-      "Dance",
-      "Outdoors",
-      "Oddly Satisfying",
-      "Home & Garden",
-      "Daily Life",
-      "Comedy",
-      "Entertainment",
-      "Animals",
-      "Food",
-      "Beauty & Style",
-      "Drama",
-      "Learning",
-      "Talent",
-      "Sports",
-      "Auto",
-      "Family",
-      "Fitness & Health",
-      "DIY & Life Hacks",
-      "Arts & Crafts",
-      "Dance",
-      "Outdoors",
-      "Oddly Satisfying",
-      "Home & Garden",
-    ];
+  State<InterestsScreen> createState() => _InterestsScreenState();
+}
 
+class _InterestsScreenState extends State<InterestsScreen> {
+  static const interests = [
+    "Daily Life",
+    "Comedy",
+    "Entertainment",
+    "Animals",
+    "Food",
+    "Beauty & Style",
+    "Drama",
+    "Learning",
+    "Talent",
+    "Sports",
+    "Auto",
+    "Family",
+    "Fitness & Health",
+    "DIY & Life Hacks",
+    "Arts & Crafts",
+    "Dance",
+    "Outdoors",
+    "Oddly Satisfying",
+    "Home & Garden",
+    "Daily Life",
+    "Comedy",
+    "Entertainment",
+    "Animals",
+    "Food",
+    "Beauty & Style",
+    "Drama",
+    "Learning",
+    "Talent",
+    "Sports",
+    "Auto",
+    "Family",
+    "Fitness & Health",
+    "DIY & Life Hacks",
+    "Arts & Crafts",
+    "Dance",
+    "Outdoors",
+    "Oddly Satisfying",
+    "Home & Garden",
+  ];
+
+  final ScrollController _scrollController = ScrollController();
+
+  bool _showTitle = false;
+
+  void initState() {
+    super.initState();
+
+    _scrollController.addListener(() {
+      _onChangeOpacity();
+    });
+  }
+
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _onChangeOpacity() {
+    if (_scrollController.offset > 50) {
+      setState(() {
+        _showTitle = true;
+      });
+    } else {
+      setState(() {
+        _showTitle = false;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Choose your interests"),
+        title: AnimatedOpacity(
+          opacity: _showTitle ? 1 : 0,
+          duration: Duration(milliseconds: 200),
+          child: Text("Choose your interests"),
+        ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(
-            left: Sizes.size32,
-            right: Sizes.size32,
-            bottom: Sizes.size16,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Gaps.v28,
-              Text(
-                "Choose your Interests",
-                style: TextStyle(
-                  fontSize: Sizes.size36,
-                  fontWeight: FontWeight.w800,
+      body: Scrollbar(
+        child: SingleChildScrollView(
+          controller: _scrollController,
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: Sizes.size32,
+              right: Sizes.size32,
+              bottom: Sizes.size16,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Gaps.v28,
+                Text(
+                  "Choose your Interests",
+                  style: TextStyle(
+                    fontSize: Sizes.size36,
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
-              ),
-              Gaps.v10,
-              Text(
-                "Got better video recommendations",
-                style: TextStyle(
-                  fontSize: Sizes.size16 + Sizes.size2,
-                  color: Colors.black87,
+                Gaps.v10,
+                Text(
+                  "Got better video recommendations",
+                  style: TextStyle(
+                    fontSize: Sizes.size16 + Sizes.size2,
+                    color: Colors.black87,
+                  ),
                 ),
-              ),
-              Gaps.v60,
-              Wrap(
-                spacing: 16,
-                runSpacing: 20,
-                children: [
-                  for (var interest in interests)
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                          vertical: Sizes.size16, horizontal: Sizes.size20),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(Sizes.size32),
-                          color: Colors.white,
-                          border: Border.all(
-                            color: Colors.black.withValues(alpha: 0.1),
+                Gaps.v60,
+                Wrap(
+                  spacing: 16,
+                  runSpacing: 20,
+                  children: [
+                    for (var interest in interests)
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                            vertical: Sizes.size16, horizontal: Sizes.size20),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(Sizes.size32),
+                            color: Colors.white,
+                            border: Border.all(
+                              color: Colors.black.withValues(alpha: 0.1),
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withValues(alpha: 0.05),
+                                blurRadius: 5,
+                                spreadRadius: 5,
+                              )
+                            ]),
+                        child: Text(
+                          interest,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
                           ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withValues(alpha: 0.05),
-                              blurRadius: 5,
-                              spreadRadius: 5,
-                            )
-                          ]),
-                      child: Text(
-                        interest,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
