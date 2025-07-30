@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:reel_me/constants/gaps.dart';
 
@@ -124,34 +123,24 @@ class InterestsScreen extends StatelessWidget {
             left: Sizes.size24,
             right: Sizes.size24,
           ),
-          child: CupertinoButton(
-            onPressed: () {},
-            color: Theme.of(context).primaryColor,
+          child: Container(
+            padding: EdgeInsets.symmetric(
+              vertical: Sizes.size14,
+            ),
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor,
+              borderRadius: BorderRadius.all(Radius.circular(Sizes.size5)),
+            ),
             child: Text(
               "Next",
               style: TextStyle(
+                fontSize: Sizes.size14,
+                fontWeight: FontWeight.w500,
                 color: Colors.white,
               ),
+              textAlign: TextAlign.center,
             ),
           ),
-          // Container(
-          //   padding: EdgeInsets.symmetric(
-          //     vertical: Sizes.size14,
-          //   ),
-          //   decoration: BoxDecoration(
-          //     color: Theme.of(context).primaryColor,
-          //     borderRadius: BorderRadius.all(Radius.circular(Sizes.size5)),
-          //   ),
-          //   child: Text(
-          //     "Next",
-          //     style: TextStyle(
-          //       fontSize: Sizes.size14,
-          //       fontWeight: FontWeight.w500,
-          //       color: Colors.white,
-          //     ),
-          //     textAlign: TextAlign.center,
-          //   ),
-          // ),
         ),
       ),
     );
