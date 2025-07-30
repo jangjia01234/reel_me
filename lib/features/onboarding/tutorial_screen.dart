@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:reel_me/constants/gaps.dart';
+import 'package:reel_me/features/onboarding/widgets/next_button.dart';
 
 import '../../constants/sizes.dart';
 
-enum Direction { right, left }
+enum Direction { up, down }
 
 enum Page { first, second }
 
@@ -15,25 +16,25 @@ class TutorialScreen extends StatefulWidget {
 }
 
 class _TutorialScreenState extends State<TutorialScreen> {
-  Direction _direction = Direction.right;
+  Direction _direction = Direction.down;
   Page _showingPage = Page.first;
 
   void _onPanUpdate(DragUpdateDetails details) {
-    if (details.delta.dx > 0) {
+    if (details.delta.dy > 0) {
       // to the right
       setState(() {
-        _direction = Direction.right;
+        _direction = Direction.down;
       });
     } else {
       // to the left
       setState(() {
-        _direction = Direction.left;
+        _direction = Direction.up;
       });
     }
   }
 
   void _onPanEnd(DragEndDetails details) {
-    if (_direction == Direction.left) {
+    if (_direction == Direction.up) {
       setState(() {
         _showingPage = Page.second;
       });
@@ -60,6 +61,22 @@ class _TutorialScreenState extends State<TutorialScreen> {
                   ? CrossFadeState.showFirst
                   : CrossFadeState.showSecond,
               duration: Duration(milliseconds: 300),
+            ),
+          ),
+        ),
+        bottomNavigationBar: BottomAppBar(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: Sizes.size48,
+              horizontal: Sizes.size24,
+            ),
+            child: AnimatedOpacity(
+              duration: Duration(milliseconds: 200),
+              opacity: _showingPage == Page.first ? 0 : 1,
+              child: GestureDetector(
+                onTap: () {},
+                child: NextButton(text: "Enter the app"),
+              ),
             ),
           ),
         ),

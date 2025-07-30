@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:reel_me/constants/gaps.dart';
 import 'package:reel_me/features/onboarding/tutorial_screen.dart';
 import 'package:reel_me/features/onboarding/widgets/interest_button.dart';
+import 'package:reel_me/features/onboarding/widgets/next_button.dart';
 
 import '../../constants/sizes.dart';
 
@@ -156,24 +157,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
           ),
           child: GestureDetector(
             onTap: _onNextTap,
-            child: Container(
-              padding: EdgeInsets.symmetric(
-                vertical: Sizes.size14,
-              ),
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.all(Radius.circular(Sizes.size5)),
-              ),
-              child: Text(
-                "Next",
-                style: TextStyle(
-                  fontSize: Sizes.size14,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
+            child: NextButton(text: "Next"),
           ),
         ),
       ),
