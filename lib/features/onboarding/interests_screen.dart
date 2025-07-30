@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reel_me/constants/gaps.dart';
+import 'package:reel_me/features/onboarding/widgets/interest_button.dart';
 
 import '../../constants/sizes.dart';
 
@@ -71,6 +72,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
 
   void _onChangeOpacity() {
     if (_scrollController.offset > 50) {
+      if (_showTitle) return;
       setState(() {
         _showTitle = true;
       });
@@ -125,29 +127,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
                   runSpacing: 20,
                   children: [
                     for (var interest in interests)
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                            vertical: Sizes.size16, horizontal: Sizes.size20),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(Sizes.size32),
-                            color: Colors.white,
-                            border: Border.all(
-                              color: Colors.black.withValues(alpha: 0.1),
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withValues(alpha: 0.05),
-                                blurRadius: 5,
-                                spreadRadius: 5,
-                              )
-                            ]),
-                        child: Text(
-                          interest,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
+                      InterestButton(interest: interest),
                   ],
                 ),
               ],
