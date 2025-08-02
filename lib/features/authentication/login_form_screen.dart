@@ -25,10 +25,11 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
         // Form을 save하면 모든 텍스트 입력에 대해 onSaved 함수 실행
         _formKey.currentState!.save();
 
-        Navigator.of(context).push(
+        Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
             builder: (context) => InterestsScreen(),
           ),
+          (route) => false, // 뒤로가기 제거
         );
       }
     }

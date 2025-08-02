@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reel_me/constants/gaps.dart';
+import 'package:reel_me/features/main_navigation/main_navigation_screen.dart';
 import 'package:reel_me/features/onboarding/widgets/next_button.dart';
 
 import '../../constants/sizes.dart';
@@ -45,6 +46,15 @@ class _TutorialScreenState extends State<TutorialScreen> {
     }
   }
 
+  void _onEnterAppTap() {
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (context) => MainNavigationScreen(),
+      ),
+      (route) => false, // 뒤로가기 제거
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -74,7 +84,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
               duration: Duration(milliseconds: 200),
               opacity: _showingPage == Page.first ? 0 : 1,
               child: GestureDetector(
-                onTap: () {},
+                onTap: _onEnterAppTap,
                 child: NextButton(text: "Enter the app"),
               ),
             ),
