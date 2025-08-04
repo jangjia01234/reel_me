@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:reel_me/constants/sizes.dart';
+import 'package:reel_me/features/videos/widgets/video_button.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
+
+import '../../../constants/gaps.dart';
 
 class VideoPost extends StatefulWidget {
   final Function onVideoFinished;
@@ -29,6 +32,7 @@ class _VideoPostState extends State<VideoPost>
   late final AnimationController _animationController;
 
   bool _isPaused = false;
+  bool _isShowMore = false;
 
   void _onVideoChange() {
     if (_videoPlayerController.value.isInitialized) {
@@ -88,6 +92,12 @@ class _VideoPostState extends State<VideoPost>
     });
   }
 
+  void _onShowMoreTap() {
+    setState(() {
+      _isShowMore = !_isShowMore;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return VisibilityDetector(
@@ -129,6 +139,78 @@ class _VideoPostState extends State<VideoPost>
                   ),
                 ),
               ),
+            ),
+          ),
+          Positioned(
+            bottom: 20,
+            left: 10,
+            right: 70,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "@니노",
+                  style: TextStyle(
+                    fontSize: Sizes.size20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Gaps.v10,
+                Text(
+                  "This is my house in Thailand!!!The surroundings are truly breathtaking! You should come and live here too—it will be an incredibly enjoyable experience!",
+                  style: const TextStyle(
+                    fontSize: Sizes.size16,
+                    color: Colors.white,
+                  ),
+                  overflow: _isShowMore
+                      ? TextOverflow.visible
+                      : TextOverflow.ellipsis,
+                ),
+                TextButton(
+                  onPressed: _onShowMoreTap,
+                  child: Text(
+                    _isShowMore ? "Hide" : "Show more",
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: Sizes.size12,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 20,
+            right: 10,
+            child: Column(
+              children: const [
+                CircleAvatar(
+                  radius: 25,
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                  foregroundImage: NetworkImage(
+                    "https://avatars.githubusercontent.com/u/71865277?v=4",
+                  ),
+                  child: Text("니노"),
+                ),
+                Gaps.v24,
+                VideoButton(
+                  icon: FontAwesomeIcons.solidHeart,
+                  text: "2.9M",
+                ),
+                Gaps.v24,
+                VideoButton(
+                  icon: FontAwesomeIcons.solidComment,
+                  text: "33K",
+                ),
+                Gaps.v24,
+                VideoButton(
+                  icon: FontAwesomeIcons.share,
+                  text: "Share",
+                )
+              ],
             ),
           ),
         ],
