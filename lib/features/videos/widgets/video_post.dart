@@ -20,11 +20,12 @@ class VideoPost extends StatefulWidget {
 
 class _VideoPostState extends State<VideoPost>
     with SingleTickerProviderStateMixin {
-  final VideoPlayerController _videoPlayerController =
-      VideoPlayerController.asset("assets/videos/sample-video.mp4");
+  // with + mixin 사용하면 해당 클래스를 복사해옴 (메서드와 속성을 전부 가져옴, 확장할 필요 x)
+  // SingleTickerProviderStateMixin: 위젯이 화면에 보일 때만 Ticker 제공
 
   final Duration _animationDuration = Duration(milliseconds: 200);
 
+  late final VideoPlayerController _videoPlayerController;
   late final AnimationController _animationController;
 
   bool _isPaused = false;
@@ -39,10 +40,12 @@ class _VideoPostState extends State<VideoPost>
   }
 
   void _initVideoPlayer() async {
+    _videoPlayerController =
+        VideoPlayerController.asset("assets/videos/sample-video.mp4");
     await _videoPlayerController.initialize();
-    _videoPlayerController.play();
-    setState(() {});
+    await _videoPlayerController.setLooping(true);
     _videoPlayerController.addListener(_onVideoChange);
+    setState(() {});
   }
 
   @override
@@ -51,6 +54,8 @@ class _VideoPostState extends State<VideoPost>
     _initVideoPlayer();
     _animationController = AnimationController(
       vsync: this,
+      // vsync: 위젯이 보이지 않을 때는 애니메이션이 동작하지 않도록 막아줌
+      // -> SingleTickerProviderStateMixin 필요
       lowerBound: 1.0,
       upperBound: 1.5,
       value: 1.5,
