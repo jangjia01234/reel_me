@@ -7,6 +7,7 @@ import 'package:reel_me/features/videos/video_timeline_screen.dart';
 import '../../constants/gaps.dart';
 import '../../constants/sizes.dart';
 import '../discover/discover_screen.dart';
+import '../inbox/inbox_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
@@ -48,11 +49,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           ),
           Offstage(
             offstage: _selectedIndex != 1,
-            child: const DiscoverScreen(),
+            child: DiscoverScreen(),
           ),
           Offstage(
             offstage: _selectedIndex != 3,
-            child: Container(),
+            child: InboxScreen(),
           ),
           Offstage(
             offstage: _selectedIndex != 4,
