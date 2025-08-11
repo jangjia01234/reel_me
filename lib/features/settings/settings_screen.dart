@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -30,14 +31,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
             value: _notifications,
             onChanged: _onNotificationsChanged,
             title: const Text("Enable notifications"),
-            subtitle: const Text("Subtitle"),
+            subtitle: const Text("They'll be cure."),
           ),
           CheckboxListTile(
             activeColor: Theme.of(context).primaryColor,
             value: _notifications,
             onChanged: _onNotificationsChanged,
-            title: const Text("Enable notifications"),
-            subtitle: const Text("Subtitle"),
+            title: const Text("Marketing emails"),
+            subtitle: const Text("We won't spam you."),
           ),
           ListTile(
             onTap: () async {
@@ -74,8 +75,35 @@ class _SettingsScreenState extends State<SettingsScreen> {
               print("booking: $booking");
             },
             title: const Text("What is your birthday?"),
+            subtitle: const Text("I need to know!"),
           ),
-          const AboutListTile(),
+          ListTile(
+            title: const Text("Log out (Android)"),
+            textColor: Colors.red,
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  icon: const FaIcon(FontAwesomeIcons.skull),
+                  title: const Text("Plz don't go"),
+                  actions: [
+                    IconButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      icon: const FaIcon(FontAwesomeIcons.car),
+                    ),
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: const Text("Yes"),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+          const AboutListTile(
+            applicationVersion: "1.0",
+            applicationLegalese: "Don't copy me.",
+          ),
         ],
       ),
     );
