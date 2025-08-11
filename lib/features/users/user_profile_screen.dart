@@ -4,6 +4,7 @@ import 'package:reel_me/features/users/widgets/persistent_tab_bar.dart';
 
 import '../../constants/gaps.dart';
 import '../../constants/sizes.dart';
+import '../settings/settings_screen.dart';
 
 class UserProfileScreen extends StatefulWidget {
   const UserProfileScreen({super.key});
@@ -13,6 +14,14 @@ class UserProfileScreen extends StatefulWidget {
 }
 
 class _UserProfileScreenState extends State<UserProfileScreen> {
+  void _onGearPressed() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const SettingsScreen(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -25,7 +34,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 title: const Text('니노'),
                 actions: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: _onGearPressed,
                     icon: const FaIcon(
                       FontAwesomeIcons.gear,
                       size: Sizes.size20,
