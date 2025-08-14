@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reel_me/constants/sizes.dart';
-import 'package:reel_me/features/main_navigation/main_navigation_screen.dart';
+import 'package:reel_me/features/authentication/sign_up_screen.dart';
 
 void main() {
   runApp(const ReelMe());
@@ -13,9 +13,14 @@ class ReelMe extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ReelMe',
+      themeMode: ThemeMode.system,
       theme: ThemeData(
+        brightness: Brightness.light,
         useMaterial3: false,
         scaffoldBackgroundColor: Colors.white,
+        bottomAppBarTheme: BottomAppBarTheme(
+          color: Colors.grey.shade50,
+        ),
         primaryColor: const Color(0xFFE9435A),
         textSelectionTheme: const TextSelectionThemeData(
           cursorColor: Color(0xFFE9435A),
@@ -31,7 +36,12 @@ class ReelMe extends StatelessWidget {
           ),
         ),
       ),
-      home: MainNavigationScreen(),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: Colors.black,
+        primaryColor: const Color(0xFFE9435A),
+      ),
+      home: SignUpScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

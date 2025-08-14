@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:reel_me/constants/gaps.dart';
 import 'package:reel_me/features/authentication/username_screen.dart';
 import 'package:reel_me/features/authentication/widgets/auth_button.dart';
+import 'package:reel_me/utils.dart';
 
 import '../../constants/sizes.dart';
 import 'login_screen.dart';
@@ -45,13 +46,16 @@ class SignUpScreen extends StatelessWidget {
                   Gaps.v10,
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Text(
-                      "Create a profile, follow other accounts, make your own videos, and more.",
-                      style: TextStyle(
-                        color: Colors.grey.shade700,
-                        fontWeight: FontWeight.w300,
+                    child: Opacity(
+                      opacity: 0.7,
+                      child: Text(
+                        "Create a profile, follow other accounts, make your own videos, and more.",
+                        style: TextStyle(
+                          color: Colors.grey.shade700,
+                          fontWeight: FontWeight.w300,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                   ),
                   Gaps.v32,
@@ -124,7 +128,7 @@ class SignUpScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.grey.shade50,
+        color: isDarkMode(context) ? null : Colors.grey.shade50,
         elevation: 2,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
