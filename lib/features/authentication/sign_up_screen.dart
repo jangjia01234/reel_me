@@ -38,10 +38,10 @@ class SignUpScreen extends StatelessWidget {
                   Gaps.v72,
                   Text(
                     "Sign up for ReelMe",
-                    style: TextStyle(
-                      fontSize: Sizes.size24,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineLarge!
+                        .copyWith(color: Colors.black),
                   ),
                   Gaps.v10,
                   Padding(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:reel_me/constants/sizes.dart';
 import 'package:reel_me/features/authentication/sign_up_screen.dart';
 
@@ -16,6 +17,17 @@ class ReelMe extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: ThemeData(
         brightness: Brightness.light,
+        textTheme: TextTheme(
+          displayMedium: GoogleFonts.openSans(
+            fontSize: 59,
+            fontWeight: FontWeight.w300,
+            letterSpacing: -0.5,
+          ),
+          headlineLarge: TextStyle(
+            fontSize: Sizes.size24,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
         useMaterial3: false,
         scaffoldBackgroundColor: Colors.white,
         bottomAppBarTheme: BottomAppBarTheme(
@@ -38,6 +50,17 @@ class ReelMe extends StatelessWidget {
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
+        textTheme: TextTheme(
+          displayMedium: GoogleFonts.openSans(
+            fontSize: 59,
+            fontWeight: FontWeight.w300,
+            letterSpacing: -0.5,
+          ),
+          headlineLarge: TextStyle(
+            fontSize: Sizes.size24,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
         scaffoldBackgroundColor: Colors.black,
         primaryColor: const Color(0xFFE9435A),
       ),
